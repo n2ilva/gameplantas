@@ -1,30 +1,20 @@
-import Plantas from "./components/plantas";
+import Plantas from "./components/plantas.js";
 import ambiente from "./components/ambiente.js";
 
 //Import do Canvas
 const canvas = document.querySelector("canvas");
 
-//Fundo/Tempo
+//Canvas renderizar na tela inteira
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    // Redesenha a grama após redimensionamento
-    desenharGrama();
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 }
-
-function desenharGrama() {
-    // Limpa o canvas antes de desenhar
-    boxGrama.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Desenha a grama ocupando 30% da parte inferior
-    planta.grama(boxGrama, 'green', canvas);
-}
-
 resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+addEventListener('resize', resizeCanvas);
 
-const boxPlantaa = canvas.getContext("2d");
+//Blocos do canvas
+
+const boxPlanta = canvas.getContext("2d");
 const boxSol = canvas.getContext("2d");
 const boxLua = canvas.getContext("2d");
 const boxNuvens = canvas.getContext("2d");
@@ -33,12 +23,30 @@ const boxSombra = canvas.getContext("2d");
 const boxRegador = canvas.getContext("2d");
 const boxRaioz = canvas.getContext("2d");
 const boxEstrelas = canvas.getContext("2d");
+const boxCeu = canvas.getContext("2d");
 
-// Criando a grama, ocupando 30% da parte inferior
+//Gerador de Grama
+const grama = new Plantas();
+grama.Grama(boxGrama, 'green', canvas);
+
+//Gerador de clima
+
+const clima = 'dialimpo'
+
+if(clima === 'dialimpo'){
+    const climaLimpo = new ambiente();
+    climaLimpo.DiaLimpo(boxCeu, boxSol, canvas, grama.alturaGrama);
+} else if(clima === 'diachuvoso'){
+    const diachuvoso = new ambiente();
+    diachuvoso.DiaChuvoso(boxCeu, boxNuvens, boxRaioz, canvas, grama.alturaGrama);
+} else if(clima === 'noite'){
+    const noite = new ambiente();
+    noite.Noite(boxCeu, boxLua, boxEstrelas, canvas, grama.alturaGrama);
+} else(console.log('Opção incorreta'))
+
+//Gerador de Planta
 const planta = new Plantas();
-desenharGrama();
-
-
+planta.Planta(boxPlanta, 'lightgreen', canvas)
 
 
 

@@ -1,42 +1,45 @@
 class Plantas{
-    constructor (boxPlantas){
-       this.galho = 0;
-       this.folha = 0;
-       this.cor = '';
-       this.fruto = 0;
-       this.semente = 0;
-       this.altura = 0;
-       this.largura = 0;
+    Planta(boxPlanta, corPlanta, canvas){
+        this.larguraPlanta = 30
+        this.alturaPlanta = -200;
+        this.corPlanta = corPlanta || 'lightgreen'
+        
+        const positionX = canvas.width / 2 - this.larguraPlanta / 2
+        const positionY = canvas.height - 200   
+
+
+        boxPlanta.fillStyle = this.corPlanta
+        boxPlanta.fillRect(positionX, positionY, this.larguraPlanta, this.alturaPlanta)
     }
-    
     RegarPlanta(){
         this.baldeAgua = 1;
         return `Planta regada! ${this.baldeAgua} balde de agua`;
     }
-    edubaPlanta(){
+    EdubaPlanta(){
         this.adubo = 1;
         return `Planta adubada! Quantidade: ${this.adubo}`;
     }
-    porSombra(){
+    PorSombra(){
         this.naSombra = true
         return `A Planta esta na sombra!`
     }
-    porSol(){
+    PodaorSol(){
         this.noSol = true
         return `Planta na luz do Sol`
     }
-    podar(){
+    Podar(){
         this.podar = true
     }
-    grama(boxGrama, corGrama, canvas){
+    Grama(boxGrama, corGrama, canvas){
+        const positionX = 0
+        const positionY = canvas.height
+        
+        this.alturaGrama = -0.3 * canvas.height;
+        this.larguraGrama = canvas.width
         this.corGrama = corGrama || 'green'
-        const alturaGrama = canvas.height * 0.3
-        const yGrama = canvas.height - alturaGrama
-        
+
         boxGrama.fillStyle = this.corGrama
-        boxGrama.fillRect(0, yGrama, canvas.width, alturaGrama)
-        
-        return `Grama desenhada ocupando 30% da parte inferior`
+        boxGrama.fillRect(positionX, positionY, this.larguraGrama, this.alturaGrama)
     }
 }
 
