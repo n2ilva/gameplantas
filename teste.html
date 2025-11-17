@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Canvas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        console.log("Script iniciado");
+        
+        const canvas = document.querySelector("canvas");
+        console.log("Canvas encontrado:", canvas);
+        
+        const ctx = canvas.getContext("2d");
+        console.log("Contexto obtido:", ctx);
+        
+        // Define tamanho do canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        console.log(`Canvas dimensões: ${canvas.width}x${canvas.height}`);
+        
+        // Teste básico - retângulo vermelho
+        ctx.fillStyle = 'red';
+        ctx.fillRect(50, 50, 100, 100);
+        
+        // Teste - círculo azul
+        ctx.fillStyle = 'blue';
+        ctx.beginPath();
+        ctx.arc(200, 100, 50, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Teste - grama verde
+        ctx.fillStyle = 'green';
+        ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
+        
+        console.log("Elementos desenhados");
+    </script>
+</body>
+</html>

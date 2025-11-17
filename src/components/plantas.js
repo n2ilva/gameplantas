@@ -1,12 +1,11 @@
 class Plantas{
     Planta(boxPlanta, corPlanta, canvas){
         this.larguraPlanta = 30
-        this.alturaPlanta = -200;
+        this.alturaPlanta = 200; // Altura positiva
         this.corPlanta = corPlanta || 'lightgreen'
         
         const positionX = canvas.width / 2 - this.larguraPlanta / 2
-        const positionY = canvas.height - 200   
-
+        const positionY = canvas.height - 200 - this.alturaPlanta; // Posição correta
 
         boxPlanta.fillStyle = this.corPlanta
         boxPlanta.fillRect(positionX, positionY, this.larguraPlanta, this.alturaPlanta)
@@ -32,9 +31,9 @@ class Plantas{
     }
     Grama(boxGrama, corGrama, canvas){
         const positionX = 0
-        const positionY = canvas.height
+        this.alturaGrama = 0.3 * canvas.height; // Altura positiva
+        const positionY = canvas.height - this.alturaGrama; // Posição correta
         
-        this.alturaGrama = -0.3 * canvas.height;
         this.larguraGrama = canvas.width
         this.corGrama = corGrama || 'green'
 

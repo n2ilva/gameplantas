@@ -21,7 +21,7 @@ class ambiente{
         boxSol.fillRect(this.Sol.x, this.Sol.y, 100, 100)
     }
     DiaChuvoso(boxCeu, boxNuvens, boxRaioz, canvas, alturaGrama){
-        this.corCeu = 'gray'
+        this.corCeu = 'darkgray'
         this.corNuvens = 'white'
         this.positionNuvens = {
             x:150,
@@ -42,7 +42,7 @@ class ambiente{
     }
     Noite(boxCeu, boxLua, boxEstrelas, canvas, alturaGrama){
         this.corlua = 'white'
-        this.corCeu = 'darkgray'
+        this.corCeu = 'darkblue'
         this.positionLua = {
             x:100,
             y:100,

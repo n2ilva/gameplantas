@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Das Plantas - Debug</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            background-color: lightgray;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        console.log("🚀 Iniciando aplicação...");
+        
+        const canvas = document.querySelector("canvas");
+        console.log("📱 Canvas:", canvas);
+        
+        if (!canvas) {
+            alert("ERRO: Canvas não encontrado!");
+            console.error("❌ Canvas não encontrado!");
+        }
+
+        const ctx = canvas.getContext("2d");
+        console.log("🎨 Contexto:", ctx);
+        
+        function desenhar() {
+            // Define tamanho do canvas
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            console.log(`📏 Dimensões: ${canvas.width}x${canvas.height}`);
+            
+            // Limpa o canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Céu azul claro
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height * 0.7);
+            console.log("☁️ Céu desenhado");
+            
+            // Grama verde
+            ctx.fillStyle = '#32CD32';
+            ctx.fillRect(0, canvas.height * 0.7, canvas.width, canvas.height * 0.3);
+            console.log("🌱 Grama desenhada");
+            
+            // Sol amarelo
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(100, 100, 50, 0, Math.PI * 2);
+            ctx.fill();
+            console.log("☀️ Sol desenhado");
+            
+            // Planta no centro
+            ctx.fillStyle = '#228B22';
+            const plantaX = canvas.width / 2 - 15;
+            const plantaY = canvas.height * 0.7 - 100;
+            ctx.fillRect(plantaX, plantaY, 30, 100);
+            console.log("🌿 Planta desenhada");
+            
+            console.log("✅ Desenho concluído!");
+        }
+        
+        desenhar();
+        window.addEventListener('resize', desenhar);
+        
+        // Teste se está funcionando
+        setTimeout(() => {
+            console.log("🔍 Verificando se o canvas tem conteúdo...");
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const hasContent = Array.from(imageData.data).some(value => value !== 0);
+            console.log("🎯 Canvas tem conteúdo:", hasContent);
+        }, 1000);
+        
+    </script>
+</body>
+</html>
