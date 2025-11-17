@@ -15,13 +15,12 @@ const boxRaioz = ctx;
 const boxEstrelas = ctx;
 const boxCeu = ctx;
 
-//Função para redimensionar canvas
-function resizeCanvas() {
+function renderizarCanvas() {
     canvas.width = innerWidth;
     canvas.height = innerHeight;
     gerar();
 }
-resizeCanvas();
+renderizarCanvas();
 addEventListener('resize', resizeCanvas);
 
 function ResetarCanvas(){
