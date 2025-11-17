@@ -9,7 +9,7 @@ class Clima{
         this.cor = 'yellow';
         this.velocidade = 1
 
-        boxSol.fillStyle = 'yellow'
+        boxSol.fillStyle = this.cor
         boxSol.fillRect(this.position.x, this.position.y, this.largura, this.altura)
     }
     Lua(x, y, largura, altura, boxLua){
@@ -22,7 +22,7 @@ class Clima{
         this.cor = 'white';
         this.velocidade = 1
 
-        boxLua.fillStyle = 'yellow'
+        boxLua.fillStyle = this.cor
         boxLua.fillRect(this.position.x, this.position.y, this.largura, this.altura)
     }
     Nuvem (x, y, largura, altura, boxNuvens){
@@ -47,7 +47,7 @@ class Clima{
             boxCeu.fillRect(0, 0, canvas.width, alturaCeu)
         };
     diaChuvoso(Nuvens, boxCeu, canvas){
-            Nuvem
+            Nuvens
             const corCeu = 'grey'
             const alturaCeu = canvas.height - Math.abs(alturaGrama)
             boxCeu.fillStyle = corCeu

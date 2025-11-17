@@ -1,7 +1,7 @@
 class Plantas{
     Planta(boxPlanta, corPlanta, canvas){
         this.larguraPlanta = 30
-        this.alturaPlanta = 200;
+        this.alturaPlanta = 150;
         this.corPlanta = corPlanta || 'lightgreen'
         
         const positionX = canvas.width / 2 - this.larguraPlanta / 2
@@ -12,8 +12,8 @@ class Plantas{
     }
     Grama(boxGrama, corGrama, canvas){
         const positionX = 0
-        this.alturaGrama = 0.3 * canvas.height; // Altura positiva
-        const positionY = canvas.height - this.alturaGrama; // Posição correta
+        this.alturaGrama = 0.3 * canvas.height;
+        const positionY = canvas.height - this.alturaGrama;
         
         this.larguraGrama = canvas.width
         this.corGrama = corGrama || 'green'
