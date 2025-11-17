@@ -23,6 +23,7 @@ function GerarPlanta(){
     const planta = new Plantas();
     planta.Plantas(boxPlanta, corPlanta, canvas);
 }
+
 function GerarNuvens(){
     const nuvens = new Nuvem();
     nuvens.Nuvem(300, 80, 180, 90);
@@ -37,30 +38,36 @@ function ResetarCanvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-const clima = 'diaLimpo'
+
+function gerar(){
+    const clima = 'diaLimpo'
 
 
-if(clima === 'diaLimpo') () => {
-    
-    const climaLimpo = new Clima();
-    climaLimpo.DiaLimpo(boxCeu, boxSol, canvas, grama.alturaGrama);
-    ResetarCanvas();
-    GerarGrama();
-    GerarPlanta();
-}
-if(clima === 'diaChuvoso') () => {
-        const diachuvoso = new Clima();
-        diachuvoso.DiaChuvoso(boxCeu, boxNuvens, boxRaioz, canvas, grama.alturaGrama);
-        GerarNuvens();
+    if(clima === 'diaLimpo'){
         ResetarCanvas();
+        const climaLimpo = new Clima();
+        climaLimpo.Clima(boxCeu, boxSol, canvas);
         GerarGrama();
+        GerarPlanta();
+    }
+    else if(clima === 'diaChuvoso'){
+        ResetarCanvas();
+        const diachuvoso = new Clima();
+        diachuvoso.Clima(boxCeu, boxNuvens, boxRaioz, canvas);
+        GerarNuvens();
+        GerarGrama();
+    }
+    else if(clima === 'noite'){
+        ResetarCanvas();
+        const noite = new Clima();
+        noite.Clima(boxCeu, boxLua, boxEstrelas, canvas)
+        GerarGrama();
+    }
+    else{
+        console.log('Clima Nao definido ou nao existe.')
+    }
 }
-if(clima === 'noite') () => {
-    const noite = new Clima();
-    noite.Noite(boxCeu, boxLua, boxEstrelas, canvas, grama.alturaGrama)
-}
-
-clima();
+gerar();
 
 
 
