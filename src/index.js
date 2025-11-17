@@ -1,6 +1,5 @@
 import Plantas from "./components/plantas.js";
 import Clima from "./components/ambiente.js";
-import Sol from "./components/ambiente.js"
 
 const canvas = document.querySelector("canvas");
 
@@ -11,17 +10,21 @@ const boxSol = ctx;
 const boxLua = ctx;
 const boxNuvens = ctx;
 const boxGrama = ctx;
-const boxRaioz = ctx;
 const boxEstrelas = ctx;
 const boxCeu = ctx;
 
 function renderizarCanvas() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     gerar();
 }
+
+function resizeCanvas() {
+    renderizarCanvas();
+}
+
 renderizarCanvas();
-addEventListener('resize', resizeCanvas);
+window.addEventListener('resize', resizeCanvas);
 
 function ResetarCanvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,59 +38,49 @@ function GerarPlanta(){
 
 function GerarGrama (){
     const grama = new Plantas();
-    grama.Grama(boxGrama, 'green', canvas);
+    const corGrama = 'green'
+    grama.Grama(boxGrama, corGrama, canvas);
 }
-
-function GerarEstrelas(){
-    const estrelas = new Clima();
-    estrelas.Estrelas(boxEstrelas);
-}
-
-function GerarLua(){
-    const lua = new Clima();
-    lua.Lua(boxLua);
-}
-
-function GerarNuvens(){
-    const nuvens = new Clima();
-    nuvens.Nuvem(boxNuvens);
-}
-
 
 function GerarDiaLimpo(){
-    const diaLimpo = new ambiente()
-    diaLimpo.CeuLimpo(Sol, boxCeu, canvas)
+    const clima = new Clima();
+    clima.CeuLimpo(null, boxCeu, canvas);
+    clima.Sol(boxSol);
+}
+function GerarDiaChuvoso(){
+    const clima = new Clima();
+    clima.CeuChuvoso(null, boxCeu, canvas);
+    clima.Nuvem(boxNuvens);
+}
+function GerarNoite(){
+    const clima = new Clima();
+    clima.CeuNoite(null, null, boxCeu, canvas);
+    clima.Lua(boxLua);
+    clima.Estrelas(boxEstrelas);
 }
 
 
 function gerar(){
-    const clima = 'diaLimpo'
+    const clima = 'diaChuvoso'
 
     if(clima === 'diaLimpo'){
         ResetarCanvas();
         GerarDiaLimpo();
         GerarGrama();
         GerarPlanta();
-
         
     }
     else if(clima === 'diaChuvoso'){
         ResetarCanvas();
-        boxCeu.fillStyle = 'grey';
-        boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
-        GerarNuvens();
+        GerarDiaChuvoso();
         GerarGrama();
+        GerarPlanta();
     }
     else if(clima === 'noite'){
         ResetarCanvas();
-        boxCeu.fillStyle = 'darkblue';
-        boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
+        GerarNoite();
         GerarGrama();
-        GerarLua();
-        GerarEstrelas();
-    }
-    else{
-        console.log('Clima não definido ou não existe.');
+        GerarPlanta();
     }
 }
 gerar();
