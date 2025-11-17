@@ -1,65 +1,78 @@
-class Clima{
-    Sol(x, y, largura, altura, boxSol){
+class Clima {
+    Sol(boxSol) {
         this.position = {
-            x: x || 100,
-            y: y || 50
+            x: 100,
+            y: 50
         };
-        this.largura = largura || 100;
-        this.altura = altura || 100;
+        this.largura = 100;
+        this.altura = 100;
         this.cor = 'yellow';
         this.velocidade = 1
 
         boxSol.fillStyle = this.cor
         boxSol.fillRect(this.position.x, this.position.y, this.largura, this.altura)
     }
-    Lua(x, y, largura, altura, boxLua){
+    Lua(boxLua) {
         this.position = {
-            x: x || 200,
-            y: y || 50
+            x: 200,
+            y: 50
         };
-        this.largura = largura || 100;
-        this.altura = altura || 100;
+        this.largura = 100;
+        this.altura = 100;
         this.cor = 'white';
         this.velocidade = 1
 
         boxLua.fillStyle = this.cor
         boxLua.fillRect(this.position.x, this.position.y, this.largura, this.altura)
     }
-    Nuvem (x, y, largura, altura, boxNuvens){
+    Estrelas(boxEstrelas) {
         this.position = {
-            x: x || 100,
-            y: y || 50
+            x: 300,
+            y: 50
         };
-        this.largura = largura || 150;
-        this.altura = altura || 80;
+        this.largura = 20;
+        this.altura = 20;
+        this.cor = 'white';
+        this.velocidade = 1
+
+        boxEstrelas.fillStyle = this.cor
+        boxEstrelas.fillRect(this.position.x, this.position.y, this.largura, this.altura)
+    }
+    Nuvem(boxNuvens) {
+        this.position = {
+            x: 100,
+            y: 50
+        };
+        this.largura = 150;
+        this.altura = 80;
         this.cor = 'white';
         this.velocidade = 2
 
-        boxNuvens.fillStyle = 'white'
+        boxNuvens.fillStyle = this.cor
         boxNuvens.fillRect(this.position.x, this.position.y, this.largura, this.altura)
     }
-        
-    diaLimpo(Sol, boxCeu, canvas){
-            Sol
-            const corCeu = 'lightblue'
-            const alturaCeu = canvas.height - Math.abs(alturaGrama)
-            boxCeu.fillStyle = corCeu
-            boxCeu.fillRect(0, 0, canvas.width, alturaCeu)
-        };
-    diaChuvoso(Nuvens, boxCeu, canvas){
-            Nuvens
-            const corCeu = 'grey'
-            const alturaCeu = canvas.height - Math.abs(alturaGrama)
-            boxCeu.fillStyle = corCeu
-            boxCeu.fillRect(0, 0, canvas.width, alturaCeu)
-        };
-    Noite(Lua, boxCeu, canvas){
-            Lua
-            const corCeu = 'darkblue'
-            const alturaCeu = canvas.height - Math.abs(alturaGrama)
-            boxCeu.fillStyle = corCeu
-            boxCeu.fillRect(0, 0, canvas.width, alturaCeu)
-        };
+    CeuLimpo(Sol, boxCeu, canvas){
+        Sol
+        const corCeu = 'lightblue'
+        const alturaCeu = canvas.height - Math.abs(alturaGrama)
+        boxCeu.fillStyle = corCeu;
+        boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
+    }
+    CeuChuvoso(Nuvens, boxCeu, canvas){
+        Nuvens
+        const corCeu = 'grey'
+        const alturaCeu = canvas.height - Math.abs(alturaGrama)
+        boxCeu.fillStyle = corCeu;
+        boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
+    }
+    CeuNoite(Lua, Estrelas, boxCeu, canvas){
+        Lua
+        Estrelas
+        const corCeu = 'darkblue'
+        const alturaCeu = canvas.height - Math.abs(alturaGrama)
+        boxCeu.fillStyle = corCeu;
+        boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
+    }
 }
 
 export default Clima

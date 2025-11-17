@@ -1,5 +1,6 @@
 import Plantas from "./components/plantas.js";
 import Clima from "./components/ambiente.js";
+import Sol from "./components/ambiente.js"
 
 const canvas = document.querySelector("canvas");
 
@@ -33,36 +34,42 @@ function GerarPlanta(){
     planta.Planta(boxPlanta, corPlanta, canvas);
 }
 
-function GerarNuvens(){
-    const nuvens = new Clima();
-    nuvens.Nuvem(150, 80, 200, 100, boxNuvens);
-}
-
 function GerarGrama (){
     const grama = new Plantas();
     grama.Grama(boxGrama, 'green', canvas);
 }
 
-function GerarSol(){
-    const sol = new Clima();
-    sol.Sol(100, 50, 100, 100, boxSol);
+function GerarEstrelas(){
+    const estrelas = new Clima();
+    estrelas.Estrelas(boxEstrelas);
 }
 
 function GerarLua(){
     const lua = new Clima();
-    lua.Lua(200, 50, 100, 100, boxLua);
+    lua.Lua(boxLua);
 }
+
+function GerarNuvens(){
+    const nuvens = new Clima();
+    nuvens.Nuvem(boxNuvens);
+}
+
+
+function GerarDiaLimpo(){
+    const diaLimpo = new ambiente()
+    diaLimpo.CeuLimpo(Sol, boxCeu, canvas)
+}
+
 
 function gerar(){
     const clima = 'diaLimpo'
 
     if(clima === 'diaLimpo'){
         ResetarCanvas();
-        boxCeu.fillStyle = 'lightblue';
-        boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
+        GerarDiaLimpo();
         GerarGrama();
         GerarPlanta();
-        GerarSol();
+
         
     }
     else if(clima === 'diaChuvoso'){
@@ -78,6 +85,7 @@ function gerar(){
         boxCeu.fillRect(0, 0, canvas.width, canvas.height * 0.7);
         GerarGrama();
         GerarLua();
+        GerarEstrelas();
     }
     else{
         console.log('Clima não definido ou não existe.');
