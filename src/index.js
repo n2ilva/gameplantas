@@ -59,9 +59,8 @@ function GerarNoite(){
     clima.Estrelas(boxEstrelas);
 }
 
-
 function gerar(){
-    const clima = 'diaChuvoso'
+    const clima = 'noite'
 
     if(clima === 'diaLimpo'){
         ResetarCanvas();
