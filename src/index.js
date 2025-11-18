@@ -44,8 +44,7 @@ function GerarGrama (){
 
 function GerarDiaLimpo(){
     const clima = new Clima();
-    clima.CeuLimpo(null, boxCeu, canvas);
-    clima.Sol(boxSol);
+    clima
 }
 function GerarDiaChuvoso(){
     const clima = new Clima();
@@ -60,7 +59,7 @@ function GerarNoite(){
 }
 
 function gerar(){
-    const clima = 'noite'
+    const clima = 'diaLimpo'
 
     if(clima === 'diaLimpo'){
         ResetarCanvas();
