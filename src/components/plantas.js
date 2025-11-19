@@ -1,25 +1,28 @@
 class Plantas{
-    Planta(boxPlanta, corPlanta, canvas){
-        this.larguraPlanta = 30
-        this.alturaPlanta = 150;
-        this.corPlanta = corPlanta || 'lightgreen'
-        
-        const positionX = canvas.width / 2 - this.larguraPlanta / 2
-        const positionY = canvas.height - 200 - this.alturaPlanta;
-
-        boxPlanta.fillStyle = this.corPlanta
-        boxPlanta.fillRect(positionX, positionY, this.larguraPlanta, this.alturaPlanta)
+    constructor(){
     }
-    Grama(boxGrama, corGrama, canvas){
-        const positionX = 0
-        this.alturaGrama = 0.3 * canvas.height;
-        const positionY = canvas.height - this.alturaGrama;
-        
-        this.larguraGrama = canvas.width
-        this.corGrama = corGrama || 'green'
 
-        boxGrama.fillStyle = this.corGrama
-        boxGrama.fillRect(positionX, positionY, this.larguraGrama, this.alturaGrama)
+    Planta(ctx, canvas, cor){
+        const largura = 30;
+        const altura = 150;
+        const corPlanta = cor || 'lightgreen';
+        
+        const positionX = canvas.width / 2 - largura / 2;
+        const positionY = canvas.height - 200 - altura;
+
+        ctx.fillStyle = corPlanta;
+        ctx.fillRect(positionX, positionY, largura, altura);
+    }
+
+    Grama(ctx, canvas, cor){
+        const positionX = 0;
+        const largura = canvas.width;
+        const altura = 0.3 * canvas.height;
+        const positionY = canvas.height - altura;
+        const corGrama = cor || 'green';
+
+        ctx.fillStyle = corGrama;
+        ctx.fillRect(positionX, positionY, largura, altura);
     }
 }
 
