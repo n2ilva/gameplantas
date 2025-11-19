@@ -23,7 +23,7 @@ function ResetarCanvas(){
 
 function GerarPlanta(){
     const planta = new Plantas();
-    planta.Planta(ctx, canvas, 'lightgreen');
+    planta.Planta(ctx, canvas);
 }
 
 function GerarGrama(){
