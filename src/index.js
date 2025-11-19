@@ -51,7 +51,7 @@ function GerarNoite(){
 //-------------------------------------------------------------------
 
 function gerar(){
-    const clima = 'diaLimpo'
+    const clima = 'diaChuvoso'
 
     if(clima === 'diaLimpo'){
         ResetarCanvas();
